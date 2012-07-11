@@ -6,13 +6,11 @@
       "js": [ "script.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
          } ],
-   "converted_from_user_script": true,
    "description": "",
    "background": {
            "scripts": ["background.js"]
              },
    "options_page": "configuration.html",
-   "key": "BimNkODHHTbgUvMYbLOzkqcVQYZJq7LM0OMeuyDOnjU=",
    "name": "New Comments Highlighter",
    "version": "1.0"
 }
