@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Select Options</title>
+    </head>
+    <script type="text/javascript">
+    // Saves options to localStorage.
+    function save_options() {
+        var days_input = document.getElementById("days");
+        var totalitems_input = document.getElementById("totalitems");
+        localStorage["number_of_days"] = days_input.value;
+        localStorage["totalitems"] = totalitems_input.value;
+        // Update status to let user know options were saved.
+        var status = document.getElementById("status");
+        status.innerHTML = "Options Saved.";
+        setTimeout(function() {
+                status.innerHTML = "";
+                }, 750);
+    }
+    // Restores select box state to saved value from localStorage.
+    function restore_options() {
+        var number_of_days = localStorage["number_of_days"];
+        var totalitems = localStorage["totalitems"]
+            var days_input = document.getElementById("days");
+        var totalitems_input = document.getElementById("totalitems");
+
+        days_input.value = number_of_days;
+        totalitems_input.value = totalitems;
+
+    }
+    </script>
+    <body onload="restore_options()">
+        Select the number of days you want to keep the comments cache: 
+        <input id="days" type="text"/><br/>
+        Enter the maximum history you want: 
+        <input id="totalitems" type="text"/><br/>
+        <div id="status"></div>
+        <button onclick="save_options()">Save</button>
+    </body>
+</html>
