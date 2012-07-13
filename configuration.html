@@ -2,6 +2,23 @@
     <head>
         <title>Select Options</title>
     </head>
+    <style>
+    p { 
+        text-indent: 20px;
+        border: solid 1px black;
+        padding: 5px
+    }
+    span
+    {
+        text-indent: 50px;
+        letter-spacing: 5px;
+        line-height: 60px;
+        text-color: blue;
+        border: solid 5px black;
+        padding: 10px;
+        background: yellow;
+    }
+    </style>
     <script type="text/javascript">
     // Saves options to localStorage.
     function save_options() {
@@ -29,10 +46,12 @@
     }
     </script>
     <body onload="restore_options()">
+        <span id="heading">Choose the settings: </span>
+        <p>
         Select the number of days you want to keep the comments cache: 
-        <input id="days" type="text"/><br/>
-        Enter the maximum history you want: 
-        <input id="totalitems" type="text"/><br/>
+        <input id="days" type="text"/><br/></p>
+        <p>Enter the maximum history you want: 
+        <input id="totalitems" type="text"/><br/></p>
         <div id="status"></div>
         <button onclick="save_options()">Save</button>
     </body>
