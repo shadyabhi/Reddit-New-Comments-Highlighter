@@ -1,58 +1,44 @@
 <html>
     <head>
         <title>Select Options</title>
+        <link type="text/css" href="bootstrap.css" rel="stylesheet" />
     </head>
     <style>
-    p { 
-        text-indent: 20px;
-        border: solid 1px black;
-        padding: 5px
-    }
-    span
-    {
-        text-indent: 50px;
-        letter-spacing: 5px;
-        line-height: 60px;
-        text-color: blue;
-        border: solid 5px black;
-        padding: 10px;
-        background: yellow;
-    }
     </style>
     <script type="text/javascript">
     // Saves options to localStorage.
     function save_options() {
         var days_input = document.getElementById("days");
         var totalitems_input = document.getElementById("totalitems");
+        var padding_input = document.getElementById("padding");
+        var button = document.getElementsByTagName("button")[0]
         localStorage["number_of_days"] = days_input.value;
         localStorage["totalitems"] = totalitems_input.value;
+        localStorage["padding"] = padding_input.value
         // Update status to let user know options were saved.
-        var status = document.getElementById("status");
-        status.innerHTML = "Options Saved.";
-        setTimeout(function() {
-                status.innerHTML = "";
-                }, 750);
+        button.className  = button.className + " btn-success"
+        button.innerText = "Success. Settings saved"
     }
     // Restores select box state to saved value from localStorage.
     function restore_options() {
-        var number_of_days = localStorage["number_of_days"];
-        var totalitems = localStorage["totalitems"]
-            var days_input = document.getElementById("days");
+        var days_input = document.getElementById("days");
         var totalitems_input = document.getElementById("totalitems");
+        var padding_input = document.getElementById("padding");
 
-        days_input.value = number_of_days;
-        totalitems_input.value = totalitems;
-
+        days_input.value = localStorage["number_of_days"];
+        totalitems_input.value = localStorage["totalitems"];
+        padding_input.value = localStorage["padding"];
     }
     </script>
     <body onload="restore_options()">
-        <span id="heading">Choose the settings: </span>
-        <p>
-        Select the number of days you want to keep the comments cache: 
-        <input id="days" type="text"/><br/></p>
-        <p>Enter the maximum history you want: 
-        <input id="totalitems" type="text"/><br/></p>
-        <div id="status"></div>
-        <button onclick="save_options()">Save</button>
+            </br> </br>
+            <label>Select the number of days you want to keep the comments cache: </label>
+            <input style="height: 25px;" id="days" type="text" class="span3" placeholder="Type something…"/><br/>
+            </br>
+            <label>Enter the maximum history you want:</label> 
+            <input style="height: 25px;" id="totalitems" type="text" class="span3"/><br/>
+            <label>Enter the pixel you want above new comments when using shortcuts to do to comments: </label>
+            <input style="height: 25px;" id="padding" type="text" class="span3"/><br/>
+            <button class="btn" onclick="save_options()">Save</button>
     </body>
 </html>

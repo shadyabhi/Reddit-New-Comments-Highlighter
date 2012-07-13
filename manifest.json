@@ -3,7 +3,7 @@
       "exclude_globs": [  ],
       "exclude_matches": [  ],
       "include_globs": [ "*.reddit.com/*" ],
-      "js": [ "script.js" ],
+      "js": [ "shortcut.js", "script.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
          } ],
    "description": "",
