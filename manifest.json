@@ -6,15 +6,14 @@
       "js": [ "shortcut.js", "script.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
          } ],
-   "description": "",
+   "description": "Highlights new comments when you revisit a link page on reddit.",
    "icons": {
       "128": "icon.jpg"
       },  
-
    "background": {
            "scripts": ["background.js"]
              },
    "options_page": "configuration.html",
-   "name": "New Comments Highlighter",
+   "name": "Reddit New Comments Highlighter",
    "version": "1.0"
 }
