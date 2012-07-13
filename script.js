@@ -14,33 +14,14 @@ NewCommentsHighlighter = {
     });
 
     var now = new Date();
-    var number_of_days = null;
 
     //var commentspage = document.getElementsByTagName("body")[0].classList.contains("comments-page");
     var commentspage = document.getElementsByClassName("comments-page").length;
 
-    chrome.extension.sendRequest({method: "getLocalStorage", key: "number_of_days"}, function(response) {
-          //console.log(response.data);
-          number_of_days = parseInt(response.data, 10);
-    });
-    
     chrome.extension.sendRequest({method: "getLocalStorage", key: "padding"}, function(response) {
           NewCommentsHighlighter.newcomments_padding = parseInt(response.data, 10);
     });
 
-    //Clean localstorage for entried older than specified days
-    for (i=0; i<localStorage.length; i++){
-        if (localStorage.key(i).match(/^cc-/) != null){
-            comment_stored_on = new Date(parseInt(localStorage[localStorage.key(i)].split(",")[0]));
-            if ( ((now - comment_stored_on)/1000/3600/24) > number_of_days){
-                localStorage.removeItem(localStorage.key(i));
-                //console.log("To delete: " + comment_stored_on.getDate());
-            }
-            else{
-                //console.log(((now - comment_stored_on)/1000/3600/24));
-            }
-        }
-    }
     // Update comment count if viewing a comments page
     if( commentspage ){
 
@@ -51,6 +32,7 @@ NewCommentsHighlighter = {
 
         // If we've been here before, highlight any new comments made since our last visit.
         // After highlighting only, we will update the localStorage about lastvisit time for the comments page
+        //console.log(data);
         if (data){ 
             data=data.split(',');
             //console.log(new Date(parseInt(data[0], 10)).toString());
@@ -81,7 +63,8 @@ NewCommentsHighlighter = {
         NewCommentsHighlighter.saveCommentCount(id,count);
         //Prepare the NodeList of unread comments
         NewCommentsHighlighter.new_comment_boxes = document.getElementsByClassName("newcomments");
-        //console.log("New comments; ");//console.log(NewCommentsHighlighter.new_comment_boxes);
+        //console.log("New comments; ");
+        //console.log(NewCommentsHighlighter.new_comment_boxes);
         }
     },
 

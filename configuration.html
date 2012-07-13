@@ -8,11 +8,9 @@
     <script type="text/javascript">
     // Saves options to localStorage.
     function save_options() {
-        var days_input = document.getElementById("days");
         var totalitems_input = document.getElementById("totalitems");
         var padding_input = document.getElementById("padding");
         var button = document.getElementsByTagName("button")[0]
-        localStorage["number_of_days"] = days_input.value;
         localStorage["totalitems"] = totalitems_input.value;
         localStorage["padding"] = padding_input.value
         // Update status to let user know options were saved.
@@ -21,20 +19,15 @@
     }
     // Restores select box state to saved value from localStorage.
     function restore_options() {
-        var days_input = document.getElementById("days");
         var totalitems_input = document.getElementById("totalitems");
         var padding_input = document.getElementById("padding");
 
-        days_input.value = localStorage["number_of_days"];
         totalitems_input.value = localStorage["totalitems"];
         padding_input.value = localStorage["padding"];
     }
     </script>
     <body onload="restore_options()">
             </br> </br>
-            <label>Select the number of days you want to keep the comments cache: </label>
-            <input style="height: 25px;" id="days" type="text" class="span3" placeholder="Type something…"/><br/>
-            </br>
             <label>Enter the maximum history you want:</label> 
             <input style="height: 25px;" id="totalitems" type="text" class="span3"/><br/>
             <label>Enter the pixel you want above new comments when using shortcuts to do to comments: </label>
