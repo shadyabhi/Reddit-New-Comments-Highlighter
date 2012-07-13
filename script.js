@@ -1,6 +1,6 @@
 NewCommentsHighlighter = {
 
-    presentCommentMarker: 0,
+    presentCommentMarker: -1,
     new_comment_boxes: null,
     newcomments_padding : null,
 
@@ -119,11 +119,11 @@ NewCommentsHighlighter = {
         if (NewCommentsHighlighter.new_comment_boxes.length == 0){
             return;
         } 
+        NewCommentsHighlighter.presentCommentMarker = pos + 1;
         var comment = NewCommentsHighlighter.new_comment_boxes[NewCommentsHighlighter.presentCommentMarker];
         console.log(comment);
         window.scroll(0, NewCommentsHighlighter.findPos(comment));
-        NewCommentsHighlighter.presentCommentMarker = pos + 1;
-
+        
     },
     
     gotoPreviousComment: function(pos) {
@@ -134,7 +134,6 @@ NewCommentsHighlighter = {
         if (pos > 0){
              NewCommentsHighlighter.presentCommentMarker = pos - 1;
         }
-         
         var comment = NewCommentsHighlighter.new_comment_boxes[NewCommentsHighlighter.presentCommentMarker];
         console.log(comment);
         window.scroll(0, NewCommentsHighlighter.findPos(comment)); 
