@@ -7,6 +7,10 @@
       "matches": [ "http://*/*", "https://*/*" ]
          } ],
    "description": "",
+   "icons": {
+      "128": "icon.jpg"
+      },  
+
    "background": {
            "scripts": ["background.js"]
              },
