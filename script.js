@@ -14,23 +14,25 @@ NewCommentsHighlighter = {
     });
 
     var now = new Date();
+    var number_of_days = null;
 
     //var commentspage = document.getElementsByTagName("body")[0].classList.contains("comments-page");
     var commentspage = document.getElementsByClassName("comments-page").length;
 
     chrome.extension.sendRequest({method: "getLocalStorage", key: "number_of_days"}, function(response) {
           //console.log(response.data);
+          number_of_days = parseInt(response.data, 10);
     });
     
     chrome.extension.sendRequest({method: "getLocalStorage", key: "padding"}, function(response) {
           NewCommentsHighlighter.newcomments_padding = parseInt(response.data, 10);
     });
 
-    //Clean localstorage for entried older than 7 days
+    //Clean localstorage for entried older than specified days
     for (i=0; i<localStorage.length; i++){
         if (localStorage.key(i).match(/^cc-/) != null){
             comment_stored_on = new Date(parseInt(localStorage[localStorage.key(i)].split(",")[0]));
-            if ( ((now - comment_stored_on)/1000/3600/24) > 0.5){
+            if ( ((now - comment_stored_on)/1000/3600/24) > number_of_days){
                 localStorage.removeItem(localStorage.key(i));
                 //console.log("To delete: " + comment_stored_on.getDate());
             }
@@ -86,7 +88,8 @@ NewCommentsHighlighter = {
     saveCommentCount: function(id, count){
         //Function to save number of comments for this thingID.
         // Trim list to maximum 1000 links
-       chrome.extension.sendRequest({method: "getLocalStorage", key: "number_of_days"}, function(response) {
+        var itemsToKeep = null;
+       chrome.extension.sendRequest({method: "getLocalStorage", key: "totalitems"}, function(response) {
            itemsToKeep = parseInt(response.data, 10);
        }); 
        var list=(localStorage.getItem('cc-list')||id).split(',');
