@@ -1,0 +1,20 @@
+{
+    "content_scripts": [ "content.js" ],
+    "description": "Highlights new comments when you revisit a comments page on reddit.",
+    "creator": "shadyabhi",
+    "background_scripts": [
+        "main.js"
+    ],
+    "homepage_url": "https://github.com/shadyabhi/Reddit-New-Comments-Highlighter",
+    "version": "2.0",
+    "browser_button": {
+        "caption": "Reddit-New-Comments-Viewer",
+        "icon": "icons/button.png",
+        "tooltipText": "Reddit-New-Comments-Viewer"
+    },
+    "permissions": {
+        "content_scripts": [ "http://www.reddit.com/r/*" ]
+    },
+    "options_page": "options.html",
+    "name": "Reddit New Comments Highlighter"
+}
