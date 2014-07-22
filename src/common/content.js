@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Reddit New Comments Highlighter
-// @include http://www.reddit.com/r/*
+// @include http://www.reddit.com/r/*/comments/*
 // ==/UserScript==
 
 //var $ = window.$.noConflict(true); // Required for Opera and IE
