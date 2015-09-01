@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name Reddit New Comments Highlighter
 // @include http://www.reddit.com/r/*/comments/*
+// @include https://www.reddit.com/r/*/comments/*
 // ==/UserScript==
 
 //var $ = window.$.noConflict(true); // Required for Opera and IE
@@ -29,11 +30,11 @@ NewCommentsHighlighter = {
     scanAndAddTriggers: function(){
         // This function adds onclick events
         var loadMoreComments = document.getElementsByClassName("morecomments");
-        for (i=0; i<loadMoreComments.length; i++){
-            loadMoreComments[i].onclick = function(){
+        $.each($(".morecomments"), function(i, moreCommentsLink){
+            moreCommentsLink.onclick = function(){
                 window.setTimeout(NewCommentsHighlighter.highlightNewComments, 3000);
             };
-            }
+        });
     },
 
     highlightNewComments: function(){
@@ -43,7 +44,7 @@ NewCommentsHighlighter = {
 
         if (commentData){
             commentData=commentData.split(',');
-            var comment_boxes = document.getElementsByClassName("noncollapsed");
+            var comment_boxes = $('.noncollapsed > .entry.unvoted')
             for (i=0; i < comment_boxes.length; i++){
                 time_tag = comment_boxes[i].getElementsByTagName("time");
 
@@ -53,7 +54,8 @@ NewCommentsHighlighter = {
                 }
                 //In other case, we are just gonna continue executing.
                 if (Date.parse(time_tag[0].getAttribute("datetime")) > parseInt(commentData[0], 10)){
-                    comment_boxes[i].style.backgroundColor = "#FFFDCC";
+                    console.log(comment_boxes[i]);
+                    $(comment_boxes[i]).attr('style', 'background-color: #FFFDCC !important');
                     //Add a class for traversing among new comments
                     comment_boxes[i].className = comment_boxes[0].className + " newcomments";
             }

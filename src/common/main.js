@@ -14,6 +14,5 @@ if (kango.storage.getItem("padding") === null){
 }
 
 function getSettings() {
-    var data_to_send = {'totalitems': kango.storage.getItem('totalitems'), "padding": kango.storage.getItem('padding')};
-    return data_to_send;
+    return {'totalitems': kango.storage.getItem('totalitems'), "padding": kango.storage.getItem('padding')};
 }
