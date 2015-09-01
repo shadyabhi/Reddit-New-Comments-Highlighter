@@ -9,9 +9,12 @@ The extension is built using Kango Framework & works on multiple browsers.
 
 # Build Instructions
 
+
+```
 $wget http://kangoextensions.com/kango/kango-framework-latest.zip
 $unzip kango-framework-latest.zip
 $python kango_dir/kango.py build ./Reddit-New-Comments-Highlighter
+```
 
 # Extension Links
 
