@@ -19,3 +19,5 @@ $python kango_dir/kango.py build ./Reddit-New-Comments-Highlighter
 # Extension Links
 
 Chrome: https://chrome.google.com/webstore/detail/reddit-new-comments-highl/ajdilinnnkbmpoegibgacadjlblmpjad
+
+Firefox: https://addons.mozilla.org/en-US/firefox/addon/reddit-new-comments-highlighte/
