@@ -2,14 +2,27 @@
     <head>
         <title>Select Options</title>
         <link type="text/css" href="bootstrap.css" rel="stylesheet" />
+        <link type="text/css" href="options.css" rel="stylesheet" />
     </head>
     <script type="text/javascript" src="options.js"></script>
     <body>
             </br> </br>
             <label>Enter the maximum history you want:</label>
-            <input style="height: 25px;" id="totalitems" type="text" class="span3"/><br/>
+            <input id="totalitems" type="text" class="span3"/><br/>
             <label>Enter the pixel you want above new comments when using shortcuts to do to comments: </label>
-            <input style="height: 25px;" id="padding" type="text" class="span3"/><br/>
+            <input id="padding" type="text" class="span3"/><br/>
+            <label>
+              Use dark theme?
+              <input type="checkbox" id="theme">
+            </label>
+            <label>
+              <p>Light theme:</p>
+              <input type="text" placeholder="e.g. #FFFDCC or grey" id="theme-light">
+            </label>
+            <label>
+              <p>Dark theme:</p>
+              <input type="text" placeholder="e.g. #444444 or red" id="theme-dark">
+            </label>
             <button class="btn">Save</button>
     </body>
 </html>

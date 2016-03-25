@@ -42,11 +42,13 @@ NewCommentsHighlighter = {
         var commentId = NewCommentsHighlighter.commentId;
         var count = NewCommentsHighlighter.count;
 
+        var themeColor = this.extension_settings['useDarkTheme'] ? this.extension_settings["themeDarkColor"] : this.extension_settings["themeLightColor"];
+
         if (commentData){
             commentData=commentData.split(',');
             var comment_boxes = $('.noncollapsed > .entry.unvoted')
-            for (i=0; i < comment_boxes.length; i++){
-                time_tag = comment_boxes[i].getElementsByTagName("time");
+            for (var i=0; i < comment_boxes.length; i++){
+                var time_tag = comment_boxes[i].getElementsByTagName("time");
 
                 if (time_tag.length == 0){
                     //We don't actually have a comment here
@@ -55,7 +57,7 @@ NewCommentsHighlighter = {
                 //In other case, we are just gonna continue executing.
                 if (Date.parse(time_tag[0].getAttribute("datetime")) > parseInt(commentData[0], 10)){
                     console.log(comment_boxes[i]);
-                    $(comment_boxes[i]).attr('style', 'background-color: #FFFDCC !important');
+                    $(comment_boxes[i]).attr('style', 'background-color: ' + themeColor + ' !important');
                     //Add a class for traversing among new comments
                     comment_boxes[i].className = comment_boxes[0].className + " newcomments";
             }
