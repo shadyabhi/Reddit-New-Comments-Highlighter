@@ -1,7 +1,3 @@
 input {
   height: 25px !important;
 }
-
-#theme-start-time, #theme-end-time {
-  width: 60px !important;
-}
