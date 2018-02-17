@@ -42,27 +42,11 @@ NewCommentsHighlighter = {
         var commentId = NewCommentsHighlighter.commentId;
         var count = NewCommentsHighlighter.count;
 
-        var themeColor;
-
-        if (this.extension_settings['autoChangeTheme']) {
-            var startTime = new Date('1970-01-01 ' + this.extension_settings["themeStartTime"]);
-            var endTime = new Date('1970-01-01 ' + this.extension_settings["themeEndTime"]);
-            var timeNow = new Date();
-            if ((timeNow.getHours() >= startTime.getHours() && timeNow.getMinutes() >= startTime.getMinutes()) ||
-                (timeNow.getHours() <= endTime.getHours() && timeNow.getMinutes() <= endTime.getMinutes())) {
-                themeColor = this.extension_settings["themeDarkColor"];
-            }
-            else {
-                themeColor = this.extension_settings["themeLightColor"];
-            }
-        }
-        else {
-            themeColor = this.extension_settings['useDarkTheme'] ? this.extension_settings["themeDarkColor"] : this.extension_settings["themeLightColor"];
-        }
+        var themeColor = this.extension_settings['useDarkTheme'] ? this.extension_settings["themeDarkColor"] : this.extension_settings["themeLightColor"];
 
         if (commentData){
             commentData=commentData.split(',');
-            var comment_boxes = $('.noncollapsed > .entry.unvoted');
+            var comment_boxes = $('.noncollapsed > .entry.unvoted')
             for (var i=0; i < comment_boxes.length; i++){
                 var time_tag = comment_boxes[i].getElementsByTagName("time");
 
@@ -124,6 +108,6 @@ NewCommentsHighlighter = {
         }
 
     }
-};
+}
 
 NewCommentsHighlighter.init();
